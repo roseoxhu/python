@@ -1,0 +1,70 @@
+﻿﻿<!doctype html public "-//w3c//dtd xhtml 1.0 transitional//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="ProgId" content="Excel.Sheet">
+    <meta name="Generator" content="Aspose.Cell 18.4">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- 需要使用国内的镜像获取css样式，加载CSS超时将导致生成图片失败 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        tbody {
+            counter-reset: sectioncounter;
+        }
+
+        .SortId:before {
+            content: counter(sectioncounter);
+            counter-increment: sectioncounter;
+        }
+    </style>
+</head>
+<body link='blue' vlink='purple' style="margin: 10px;">
+<table class="table table-striped table-bordered">
+    <caption><h2 align='center'>【Foo项目各城市推广注册用户】统计</h2></caption>
+    <thead>
+    <tr>
+        <th style="vertical-align: middle;" class="text-center" rowspan='2' height='40'>城市</th>
+        <th style="vertical-align: middle;" class="text-center" rowspan='2' height='40'>总注册</th>
+        <th style="vertical-align: middle;" class="text-center" rowspan='2' height='40'>下载登录</th>
+        <th style="vertical-align: middle;" class="text-center" rowspan='2' height='40'>下载率</th>
+        <th style="vertical-align: middle;" class="text-center" colspan='7'>{{ statDate }}推广数据排行</th>
+    </tr>
+    <tr height='21'>
+        <td style="vertical-align: middle;" class="text-center">ToC<br>订单数</td>
+        <td style="vertical-align: middle;" class="text-center">ToB<br>订单数</td>
+        <td style="vertical-align: middle;" class="text-center"><br>客服代注册</td>
+        <td style="vertical-align: middle;" class="text-center"><br>工程师邀请</td>
+        <td style="vertical-align: middle;" class="text-center"><br>用户邀请</td>
+        <td style="vertical-align: middle;" class="text-center">推广<br>注册合计</td>
+        <td style="vertical-align: middle;" class="text-center"><br>当日排行</td>
+    </tr>
+    </thead>
+
+    {% for item in dataList %}
+    <tr>
+        <td class="text-center">{{ item.cityName }}</td>
+        <td class="text-center">{{ item.totalRegist }}</td>
+        <td class="text-center">{{ item.totalDownload }}</td>
+        <td class="text-center">{{ item.downloadRate }}</td>
+        <td class="text-center">{{ item.orderCount }}</td>
+        <td class="text-center">{{ item.order2BCount }}</td>
+        <td class="text-center">{{ item.adminRegist }}</td>
+        <td class="text-center">{{ item.engineerInvite }}</td>
+        <td class="text-center">{{ item.userInvite }}</td>
+        <td class="text-center">{{ item.totalInvite }}</td>
+        {% if item.cityName == '平台' %}
+        <td class="text-center">-</td>
+        {% else %}
+        <td class="SortId text-center"></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+
+
+    <tr height='21' style='mso-height-source:userset;height:16pt' id='r15'>
+        <!--<td colspan='10' height='20' class='x31' style='height:15.25pt;'>注：【渠道推广】包括微信公众号、单页、海报等渠道的推广数据。</td>-->
+    </tr>
+</table>
+</body>
+</html>
